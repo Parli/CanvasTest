@@ -1,6 +1,6 @@
 # Simultaneous drawing application test
 
-**Create a socket server that connects to multiple browser clients and sends drawing data between them to create a synchronized drawing application.**
+*Create a socket server that connects to multiple browser clients and sends drawing data between them to create a synchronized drawing application.*
 
 The client should accept mouse input, and draw a line when the user clicks and drags on the canvas.
 
