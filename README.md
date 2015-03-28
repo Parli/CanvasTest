@@ -8,6 +8,12 @@ If another client is connected, they should see the same drawing appear on the o
 
 If any client presses the `esc` key, all clients should clear their current image.
 
+Places to write your code have been marked in `server.js` and `public/index.js`
+
+You can load `index.js` directly from the file system if you want to work on that before building the server.
+
+Please begin working on the test as soon as you receive it, and send it back to us as soon as you are done.
+
 The following documentation will put you in the right direction:
 
 ## Node.js
@@ -23,3 +29,4 @@ The following documentation will put you in the right direction:
 ## Canvas
 * Basic usage tutorial: [https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage)
 * `lineTo` documentation: [https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo)
+* `fillRect` documentation: [https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect)
