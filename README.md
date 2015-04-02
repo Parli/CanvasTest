@@ -30,9 +30,7 @@
 
 * You can load `index.js` directly from the file system if you want to work on the client before building the server.
 
-* Please begin working on the task as soon as you receive it, and send it back to us as soon as you are done.
-
-* After you complete the task, we will ask you some follow up questions.
+* Be prepared to answer some follow up questions after you complete the task.
 
 * I will be available for the entire time you are working on the task to answer any questions you have. AMAA, you can contact me through tmetler@gmail.com on hangouts or email.
 
