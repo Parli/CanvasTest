@@ -20,7 +20,7 @@
 
 * If a client disconnects, all of the lines drawn by that client should be removed.
 
-* If a client presses the `s` key, all lines that they have drawn up until that point should be saved, and not be removed when they disconnect. Any lines drawn by them *after* they saved should still be removed when they disconnect.
+* If a client presses the `s` key, all lines that that client has drawn up until that point should be saved, and not be removed when they disconnect. Any lines drawn by them *after* they saved should still be removed when they disconnect.
 
 * The server state does not need to persist if the server is restarted.
 
