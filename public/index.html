@@ -14,7 +14,82 @@
     <!-- Your client code -->
     <script>
       // Client code goes here
+      var lastMouseOffset = null;
+      var mouseIsDown = false;
+
+      $('#canvas').mousedown(function(e) {
+        mouseIsDown = true;
+        lastMouseOffset = {
+          x: e.offsetX,
+          y: e.offsetY
+        }
+
+        socket.emit('mousedown', lastMouseOffset);
+      });
+
+      $('#canvas').mouseup(function(e) {
+        mouseIsDown = false;
+      });
+
+      var canvasCtx = $('#canvas')[0].getContext('2d');
+
+      $('#canvas').on('mousemove', function(e) {
+        if (mouseIsDown && lastMouseOffset) {
+          var currMouseOffset = {
+            x: e.offsetX, y: e.offsetY
+          };
+
+          drawLine(lastMouseOffset, currMouseOffset);
+          lastMouseOffset = currMouseOffset;
+
+          socket.emit('mousemove', currMouseOffset);
+        } 
+      });
+
+      $(document).on('keydown', function(e) {
+        // key S
+        if (e.which == 83) {
+          socket.emit('saveline');
+        }
+      });
+
+      function drawLine(from, to) {
+        canvasCtx.beginPath();
+        canvasCtx.moveTo(from.x, from.y);
+        canvasCtx.lineTo(to.x, to.y);
+        canvasCtx.stroke();
+      }
+
       var socket = io();
+      var remoteMouseOffset = {};
+      socket.on('mousedown', function(data) {
+        remoteMouseOffset[socket.id] = data.location;
+      });
+      socket.on('mousemove', function(data) {
+        drawLine(remoteMouseOffset[socket.id], data.location);
+        remoteMouseOffset[socket.id] = data.location;
+      });
+
+      function drawLinesFromHistory(lines) {
+        for (var socketId in lines) {
+          var clientLines = lines[socketId];
+          for (var i = 0; i < clientLines.length; ++i) {
+            var line = clientLines[i];
+            for (var j = 0; j < line.length-1; ++j) {
+              drawLine(line[j], line[j+1]);
+            }
+          }
+        }
+      }
+
+      socket.on('drawhistory', function(data) {
+        drawLinesFromHistory(data.lines);
+      });
+
+      socket.on('redraw', function(data) {
+        canvasCtx.clearRect(0, 0, 500, 300);
+        drawLinesFromHistory(data.lines);
+      });
     </script>
   </body>
 </html>
