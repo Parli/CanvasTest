@@ -15,6 +15,65 @@
     <script>
       // Client code goes here
       var socket = io();
-    </script>
-  </body>
-</html>
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext("2d");
+      var lastPosition = {x: 0, y: 0};
+
+
+      var drawLine = function (line) {
+          ctx.beginPath();
+          ctx.moveTo(line.from.x, line.from.y);
+          ctx.lineTo(line.to.x, line.to.y);
+          ctx.stroke();
+      };
+      var drawLines = function (users) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          Object.keys(users).forEach(function (username){
+            users[username].lines.forEach(drawLine);
+          });
+      };
+
+      socket.on('draw', drawLine);
+      socket.on('redraw', drawLines);
+
+      var moveListener = function (e) {
+          console.log('move mouse', e.offsetX, e.offsetY);
+          var line = {
+            from: {
+              x: lastPosition.x,
+              y: lastPosition.y
+            },
+            to: {
+              x: e.offsetX,
+              y: e.offsetY
+            }
+          };
+          lastPosition = {x: e.offsetX, y:e.offsetY};
+          drawLine(line);
+          socket.emit('draw', line);
+      };
+
+      canvas.addEventListener("mousedown", function (e) {
+        lastPosition = {x: e.offsetX, y:e.offsetY};
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+
+        var moveFunc = canvas.addEventListener("mousemove", moveListener);
+        canvas.addEventListener("mouseup", function () {
+          canvas.removeEventListener("mousemove", moveListener);
+        });
+
+        });
+
+        document.onkeypress = function(e) {
+          e = e || window.event;
+          var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+          if (String.fromCharCode(charCode) == 's') {
+            console.log('should save');
+            socket.emit('save');
+          }
+        };
+
+        </script>
+      </body>
+    </html>
