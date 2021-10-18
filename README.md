@@ -28,6 +28,8 @@
 
 ### Socket.io
 * Chat client example: [https://github.com/Automattic/socket.io/tree/master/examples/chat](https://github.com/Automattic/socket.io/tree/master/examples/chat)
+* Server documentation: [https://socket.io/docs/v4/server-initialization/](https://socket.io/docs/v4/server-initialization/)
+* Client documentation: [https://socket.io/docs/v4/client-socket-instance/](https://socket.io/docs/v4/client-socket-instance/)
 
 ### Canvas
 * `lineTo` documentation: [https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo)
