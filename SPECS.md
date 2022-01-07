@@ -10,10 +10,10 @@
 
 * If a new client connects, the existing image should be sent to them.
 
-* If a client presses the `esc` key, the current image should be cleared for all clients, and all server image history should be erased.
-
 * If a client disconnects, all of the lines drawn by that client should be removed for all clients.
 
-* If a client presses the `s` key, all lines that that client has drawn up until that point should be saved, and not be removed when they disconnect. Any lines drawn by them *after* they saved should still be removed when they disconnect.
+* Implement undo for all clients
+
+* Implement redo for all clients
 
 * The server state does not need to persist if the server is restarted.
