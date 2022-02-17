@@ -16,9 +16,7 @@
 
 ## Notes
 
-* Places to write your code have been marked in `server.js` and `public/index.js`
-
-* You can load `index.js` directly from the file system if you want to work on the client before building the server.
+* Places to write your code have been marked in `public/main.js` and `server.js`
 
 * Be prepared to answer some follow up questions after you complete the task.
 
