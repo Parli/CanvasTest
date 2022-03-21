@@ -4,6 +4,8 @@
 
 * Any lines drawn by a client should be sent to the other clients and reproduced on their screens.
 
+* The server state does not need to persist if the server is restarted.
+
 ## Additional Specifications
 
 * All clients should see the same image at all times
@@ -15,5 +17,3 @@
 * Implement undo for all clients
 
 * Implement redo for all clients
-
-* The server state does not need to persist if the server is restarted.
