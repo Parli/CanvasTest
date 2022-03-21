@@ -1,2 +1,3 @@
 // Client code goes here
-var socket = io();
+
+const socket = io(); // Initialize socket.io
